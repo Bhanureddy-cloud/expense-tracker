@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Auth from "./Auth";
+import Dashboard from "./Dashboard";
 
 export default function App() {
   const [name, setName] = useState(localStorage.getItem("name"));
@@ -14,12 +15,5 @@ export default function App() {
   if (!loggedIn || !name) {
     return <Auth onLogin={(data) => setName(data.name)} />;
   }
-
-  return (
-    <div className="card">
-      <h1>Welcome, {name}</h1>
-      <p>Expenses will appear here in the next step.</p>
-      <button onClick={logout}>Log out</button>
-    </div>
-  );
+  return <Dashboard name={name} onLogout={logout} />;
 }

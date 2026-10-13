@@ -64,3 +64,64 @@ button:disabled {
   text-align: center;
   font-size: .9rem;
 }
+
+.wide {
+  max-width: 800px;
+}
+
+.topbar,
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.topbar h1 {
+  margin: 0;
+}
+
+.expense-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .75rem;
+}
+
+h2 {
+  margin-top: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: .5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+button.secondary {
+  background: #6b7280;
+}
+
+button.link {
+  background: none;
+  color: #2563eb;
+  padding: 0 .5rem;
+}
+
+button.link.danger {
+  color: #b91c1c;
+}
+
+.muted {
+  color: #6b7280;
+}

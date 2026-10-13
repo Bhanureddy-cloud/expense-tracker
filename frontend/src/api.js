@@ -10,6 +10,12 @@ export async function request(path, options = {}) {
         },
     });
 
+    if (res.status === 401 && !path.startsWith("/api/auth")) {
+        localStorage.clear();
+        window.location.reload();
+        return;
+    }
+
     if (res.status === 204) return null;
     const data = await res.json().catch(() => null);
 
