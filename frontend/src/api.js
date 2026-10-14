@@ -21,12 +21,15 @@ export async function request(path, options = {}) {
 
     if (!res.ok) {
         let message = data?.message;
+
+        // validation errors come back as { field: "message" }
         if (!message && data && typeof data === "object" && !data.status) {
-            message = Object.values(data).join(", "); // validation errors: {field: message}
+            message = Object.values(data).join(", ");
         }
+
         if (!message) {
             message =
-                res.status === 409 ? "That email is already registered"
+                res.status === 409 ? "Email already registered"
                     : res.status === 401 ? "Invalid email or password"
                         : `Request failed (${res.status})`;
         }
