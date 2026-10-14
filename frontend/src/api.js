@@ -20,10 +20,16 @@ export async function request(path, options = {}) {
     const data = await res.json().catch(() => null);
 
     if (!res.ok) {
-        const message =
-            data?.message ||
-            (data && typeof data === "object" ? Object.values(data).join(", ") : null) ||
-            "Request failed";
+        let message = data?.message;
+        if (!message && data && typeof data === "object" && !data.status) {
+            message = Object.values(data).join(", "); // validation errors: {field: message}
+        }
+        if (!message) {
+            message =
+                res.status === 409 ? "That email is already registered"
+                    : res.status === 401 ? "Invalid email or password"
+                        : `Request failed (${res.status})`;
+        }
         throw new Error(message);
     }
     return data;

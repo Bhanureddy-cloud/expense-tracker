@@ -5,7 +5,7 @@ Full-stack expense tracker with secure per-user data, monthly filtering, and cat
 **Live demo:** https://expense-tracker-eight-blue-76.vercel.app
 *(The backend runs on a free tier and sleeps when idle, so the first request can take up to a minute.)*
 
-**Demo account:** `demo@example.com` / `Demo@1234`
+**Demo account:** `reddy.demo@example.com` / `Demo@1234`
 
 ## Architecture
 
