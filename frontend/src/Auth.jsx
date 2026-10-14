@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { request } from "./api";
 
 export default function Auth({ onLogin }) {
@@ -7,8 +7,17 @@ export default function Auth({ onLogin }) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
+    const [slow, setSlow] = useState(false);
+
+    useEffect(() => {
+        if (!loading) { setSlow(false); return; }
+        const t = setTimeout(() => setSlow(true), 4000);
+        return () => clearTimeout(t);
+    }, [loading]);
+
     const change = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+    { slow && <p className="muted">Server is waking up (free hosting). This can take up to a minute...</p> }
     const submit = async (e) => {
         e.preventDefault();
         setError("");
