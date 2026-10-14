@@ -5,11 +5,14 @@ Full-stack expense tracker with secure per-user data, monthly filtering, and cat
 **Live demo:** https://expense-tracker-eight-blue-76.vercel.app
 *(The backend runs on a free tier and sleeps when idle, so the first request can take up to a minute.)*
 
-**Demo account:** `reddy.demo@example.com` / `Demo@1234`
+**Demo account:** `demo@example.com` / `Test@1234`
 
 ## Architecture
 
 Browser (React on Vercel) → REST API (Spring Boot on Render) → PostgreSQL (Render)
+
+![Dashboard](docs/LoginPage.png)
+![Dashboard](docs/Dashboard.png)
 
 ## Features
 - Signup and login with JWT authentication (BCrypt-hashed passwords)
